@@ -1,6 +1,6 @@
 let question = require('../assets/readline-async-question');
 
-async function findCoPrimes() {
+module.exports = async () => {
   let answer = await question("Let's find the co-prime numbers. Enter a number: ")
   if (answer) {
     let number = parseInt(answer);
@@ -24,5 +24,3 @@ async function findCoPrimes() {
 
   }
 }
-
-module.exports = findCoPrimes;
