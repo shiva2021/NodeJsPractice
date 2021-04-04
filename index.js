@@ -10,7 +10,8 @@ const choices = () => {
   return [
     'secondLargestNum',
     'countDecoding',
-    'findCoPrimes'
+    'findCoPrimes',
+    'maxFrequency'
   ]
 }
 

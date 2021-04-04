@@ -1,3 +1,11 @@
+/** Problem Statement 
+ * 
+ * Let 1 represent ‘A’, 2 represents ‘B’, etc. 
+ * Given a digit sequence, count the number of 
+ * possible decodings of the given digit sequence. 
+ * 
+*/
+
 let question = require('../assets/readline-async-question');
 
 module.exports = async () => {

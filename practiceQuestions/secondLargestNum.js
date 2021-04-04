@@ -1,3 +1,11 @@
+/** Problem Statement:
+ * 
+ * Given an array of integers, our task is to write a 
+ * program that efficiently finds the second largest 
+ * element present in the array.
+ * 
+ */
+
 let question = require('../assets/readline-async-question');
 let { descending } = require('../assets/sort');
 
