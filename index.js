@@ -1,47 +1,33 @@
-const rl = require('readline');
-const readline = rl.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  terminal: false
-})
-const { promisify } = require('util');
-
-readline.question[promisify.custom] = (question) => {
-  return new Promise((resolve) => {
-    readline.question(question, resolve);
-  });
-};
-
-let question = promisify(readline.question);
+const inquirer = require('inquirer');
+const prompt = inquirer.createPromptModule();
 
 process.on('unhandledRejection', (err) => {
   console.error(err instanceof Error ? err.message : err);
   process.exit(-1);
 });
 
+const choices = () => {
+  return [
+    'secondLargestNum',
+    'countDecoding',
+    'findCoPrimes'
+  ]
+}
+
 (async () => {
   try {
-    const answer = await question('Which test do you want to trigger? ');
-    switch (answer) {
-      case "findSecondLargest":
-        console.log(`${answer} has started!!.. :) `)
-        let findSecondLargest = require('./practiceQuestions/secondLargestNum');
-        findSecondLargest(1)
-        break;
+    let questions = [{
+      type: 'list',
+      message: 'Which test do you want to trigger? ',
+      choices: choices,
+      name: 'selectedOption'
+    }]
 
-      case "countDecodings":
-        let countDecodings = require('./practiceQuestions/countDecoding')
-        countDecodings(2)
-        break;
+    prompt(questions).then((answer) => {
+      let program = require(`./practiceQuestions/${answer.selectedOption}`);
+      if (program) program()
+    }).catch(err => console.log(err))
 
-      case "findCoPrimes":
-        let findCoPrimes = require('./practiceQuestions/findCoPrimes');
-        findCoPrimes(3)
-        break
-
-      default:
-        break;
-    }
   } catch (err) {
     console.error('Error Occured!', err);
     readline.close()

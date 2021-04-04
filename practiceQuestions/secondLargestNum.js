@@ -1,29 +1,18 @@
-function findSecondLargest(code) {
-  let rl = require('readline');
+let question = require('../assets/readline-async-question');
+let { descending } = require('../assets/sort');
 
-  let readline = rl.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-    terminal: false
-  })
+module.exports = async () => {
+  let answer = await question("Enter an array of numbers and I will find the second largest number for you: ");
+  if (answer) {
+    let strArr = answer.split(" ");
+    let numArr = strArr.map((a) => parseFloat(a));
 
-  let name = "findSecondLargest"
+    /** remove the duoplicates */
+    numArr = [...new Set(numArr)]
 
-  readline.question("Enter an array of numbers and I will find the second largest number for you: ", (data) => {
-    if (data && data !== name) {
-      let strArr = data.split(" ");
-      let numArr = strArr.map((a) => parseFloat(a));
+    /** sorted descending */
+    numArr = descending(numArr)
 
-      numArr = [...new Set(numArr)]
-      /** sorted descending */
-      numArr.sort((a, b) => (a < b) ? 1 : (a > b) ? -1 : 0)
-
-      /** sorted ascending */
-      // numArr.sort((a, b) => (a < b) ? -1 : (a > b) ? 1 : 0)
-
-      if (numArr[1]) console.log('The second largest num is ' + numArr[1]);
-    }
-  })
-
+    if (numArr[1]) console.log('The second largest num is ' + numArr[1]);
+  }
 }
-module.exports = findSecondLargest
