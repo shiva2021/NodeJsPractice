@@ -11,7 +11,8 @@ const choices = () => {
     'secondLargestNum',
     'countDecoding',
     'findCoPrimes',
-    'maxFrequency'
+    'maxFrequency',
+    'findBrackets',
   ]
 }
 
