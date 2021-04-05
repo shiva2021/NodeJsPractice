@@ -1,4 +1,4 @@
-let question = require('../assets/readline-async-question');
+let { question, readline } = require('../assets/readline-async-question');
 
 module.exports = async () => {
   let answer = await question('Enter the array: ');

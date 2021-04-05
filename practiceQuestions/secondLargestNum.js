@@ -6,7 +6,7 @@
  * 
  */
 
-let question = require('../assets/readline-async-question');
+let { question, readline } = require('../assets/readline-async-question');
 let { descending } = require('../assets/sort');
 
 module.exports = async () => {
@@ -15,11 +15,8 @@ module.exports = async () => {
     let strArr = answer.split(" ");
     let numArr = strArr.map((a) => parseFloat(a));
 
-    /** remove the duoplicates */
-    numArr = [...new Set(numArr)]
-
-    /** sorted descending */
-    numArr = descending(numArr)
+    /** sort and remove the duplicates */
+    numArr = descending([...new Set(numArr)]);
 
     if (numArr[1]) console.log('The second largest num is ' + numArr[1]);
   }

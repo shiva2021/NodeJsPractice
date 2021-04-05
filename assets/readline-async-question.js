@@ -15,4 +15,4 @@ readline.question[promisify.custom] = (question) => {
 
 let question = promisify(readline.question);
 
-module.exports = question;
+module.exports = { question, readline };
