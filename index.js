@@ -13,6 +13,7 @@ const choices = () => {
     'findCoPrimes',
     'maxFrequency',
     'findBrackets',
+    'thirdmaximumSum'
   ]
 }
 
